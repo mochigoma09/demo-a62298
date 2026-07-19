@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- ============================================================
+     head.html — 全デモ共通の <head> 不変ブロック（SEO）。
+     各デモの <head> に必ず含める。{{...}} は案件情報で差し替え。
+     ============================================================ -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>みわエキゾチック動物病院｜動物病院</title>
+<meta name="description" content="豊島区のエキゾチック動物病院。専門医が爬虫類・鳥・小動物など珍しいペットの健康をサポート。確かな知識と温かいケアで安心を提供します。">
+<link rel="canonical" href="https://mochigoma09.github.io/demo-a62298/">
+
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="みわエキゾチック動物病院">
+<meta property="og:title" content="みわエキゾチック動物病院｜動物病院">
+<meta property="og:description" content="豊島区のエキゾチック動物病院。専門医が爬虫類・鳥・小動物など珍しいペットの健康をサポート。確かな知識と温かいケアで安心を提供します。">
+<meta property="og:url" content="https://mochigoma09.github.io/demo-a62298/">
+<meta property="og:image" content="">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="みわエキゾチック動物病院｜動物病院">
+<meta name="twitter:description" content="豊島区のエキゾチック動物病院。専門医が爬虫類・鳥・小動物など珍しいペットの健康をサポート。確かな知識と温かいケアで安心を提供します。">
+<meta name="twitter:image" content="">
+
+<!-- 構造化データ（VeterinaryCare は preset の schema.orgサブタイプ。住所/電話は実値へ） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Organization", "@id": "https://mochigoma09.github.io/demo-a62298/#org", "name": "みわエキゾチック動物病院", "url": "https://mochigoma09.github.io/demo-a62298/" },
+    { "@type": "WebSite", "@id": "https://mochigoma09.github.io/demo-a62298/#site", "url": "https://mochigoma09.github.io/demo-a62298/", "name": "みわエキゾチック動物病院", "publisher": { "@id": "https://mochigoma09.github.io/demo-a62298/#org" } },
+    { "@type": "VeterinaryCare", "@id": "https://mochigoma09.github.io/demo-a62298/#biz", "name": "みわエキゾチック動物病院", "url": "https://mochigoma09.github.io/demo-a62298/", "telephone": "03-5981-9761", "address": { "@type": "PostalAddress", "addressCountry": "JP", "addressRegion": "東京都", "addressLocality": "豊島区", "streetAddress": "駒込１丁目２５−５" } }
+  ]
+}
+</script>
+
+<!-- フォント（コンセプトで差し替え） / 土台CSS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho+B1:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base/base.css">
+<!-- ↑ 案件コンセプトのトークンは、この後に <style>
+/* ============================================================
+   base.css — 全デモ共通の「不変の土台」（品質の担保。見た目の個性はここに持たせない）
+   各デモHTMLは必ずこれを読み込み、レイアウト/世界観は自由に作る。
+   固定するのは：リセット / トークンの“契約”（変数名）/ a11y / 再利用部品 のみ。
+   ============================================================ */
+
+/* --- デザイントークンの契約（値は案件コンセプトで :root を上書きする） --- */
+:root {
+  --color-primary: #1f3a5f;
+  --color-accent:  #b89150;
+  --color-text:    #2a2e35;
+  --color-bg:      #ffffff;
+  --color-surface: #f5f7fa;
+  --color-line:    rgba(0, 0, 0, 0.12);
+  --font-heading:  "Noto Serif JP", serif;
+  --font-body:     system-ui, -apple-system, "Noto Sans JP", sans-serif;
+  --radius:        14px;
+  --container:     1120px;
+}
+
+/* --- reset（wp-theme-starter から移植） --- */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { min-height: 100vh; font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); line-height: 1.8; -webkit-font-smoothing: antialiased; }
+img, svg, video, picture { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; background: none; border: 0; cursor: pointer; }
+h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.4; }
+ul, ol { list-style: none; padding: 0; }
+
+/* --- a11y（不変） --- */
+.sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; } }
+
+/* --- 再利用部品（配色/形はトークン依存＝案件で変わる。構造だけ共通） --- */
+.l-wrapper { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: 20px; }
+
+.c-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 14px 32px; font-weight: 700; border-radius: 999px; color: #fff; background: var(--color-primary); transition: transform .25s, box-shadow .25s; }
+.c-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,.15); }
+
+/* 全画面ハンバーガー（1024px以下） */
+.c-hamburger { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; position: relative; z-index: 1001; }
+.c-hamburger__bars, .c-hamburger__bars::before, .c-hamburger__bars::after { content: ""; display: block; width: 24px; height: 2px; background: var(--color-text); transition: transform .3s, opacity .3s; }
+.c-hamburger__bars { position: relative; }
+.c-hamburger__bars::before { position: absolute; top: -7px; left: 0; }
+.c-hamburger__bars::after  { position: absolute; top: 7px;  left: 0; }
+.c-hamburger[aria-expanded="true"] .c-hamburger__bars { background: transparent; }
+.c-hamburger[aria-expanded="true"] .c-hamburger__bars::before { transform: translateY(7px) rotate(45deg); }
+.c-hamburger[aria-expanded="true"] .c-hamburger__bars::after  { transform: translateY(-7px) rotate(-45deg); }
+.c-nav { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(12px); opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s; font-family: var(--font-heading); font-size: 1.2rem; }
+.c-nav.is-open { opacity: 1; visibility: visible; }
+@media (min-width: 1025px) {
+  .c-hamburger { display: none; }
+  .c-nav { position: static; flex-direction: row; gap: 32px; background: none; backdrop-filter: none; opacity: 1; visibility: visible; font-size: 1rem; }
+}
+
+/* スクロールリビール（nav.jsがJSで付与する。JS無効環境では何も付かず常に表示） */
+.js-reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.js-reveal.is-inview { opacity: 1; transform: none; }
+
+/* 追従フローティングCTA（1024px以下） */
+.c-floating-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 800; display: flex; justify-content: center; padding: 0 16px 14px; pointer-events: none; }
+.c-floating-cta .c-btn { pointer-events: auto; width: 100%; max-width: 520px; box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+body { padding-bottom: 84px; } /* CTA分の余白 */
+@media (min-width: 1025px) { .c-floating-cta { display: none; } body { padding-bottom: 0; } }
+
+</style>
+<style>:root{ --color-primary: ...; }</style> で上書きする -->
+<style>
+  :root {
+    --color-primary: #4A6C5B;
+    --color-accent: #D9A05B;
+    --color-surface: #F8FBF8;
+    --color-text: #36403A;
+    --font-heading: 'Shippori Mincho B1', serif;
+    --font-body: 'Noto Sans JP', sans-serif;
+    --radius: 8px;
+  }
+
+  body {
+    background-color: var(--color-surface);
+  }
+
+  .l-wrapper {
+    padding-inline: clamp(20px, 5vw, 40px);
+  }
+
+  /* Header */
+  .site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px clamp(20px, 5vw, 40px);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .site-header__logo {
+    font-family: var(--font-heading);
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .c-nav a {
+    color: var(--color-text);
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 4px;
+  }
+  .c-nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-accent);
+    transition: width 0.3s ease;
+  }
+  .c-nav a:hover::after {
+    width: 100%;
+  }
+
+  /* Typography */
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    line-height: 1.1;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5em;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 1px;
+    background-color: var(--color-accent);
+  }
+
+  .section-subtitle {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-weight: 500;
+    color: var(--color-accent);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.5em;
+  }
+
+  /* General Section Styling */
+  section {
+    padding-block: clamp(80px, 10vw, 120px);
+    position: relative;
+  }
+
+  section + section {
+    border-top: 1px solid var(--color-line); /* hairline-rule motif */
+  }
+
+  /* Hero Section */
+  .hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-block: 0;
+  }
+
+  .hero__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    padding-block: clamp(80px, 10vw, 120px);
+    width: 100%;
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: clamp(20px, 5vw, 40px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: inherit;
+  }
+
+  .hero__title {
+    font-size: clamp(2.8rem, 8vw, 5.5rem);
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    max-width: 60%; /* asymmetric */
+  }
+
+  .hero__description {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 40px;
+    line-height: 1.6;
+    max-width: 50%; /* asymmetric */
+  }
+
+  .hero__cta .c-btn {
+    background-color: var(--color-accent);
+    color: var(--color-text);
+  }
+  .hero__cta .c-btn:hover {
+    background-color: color-mix(in srgb, var(--color-accent) 90%, black);
+  }
+
+  @media (max-width: 768px) {
+    .hero__title, .hero__description {
+      max-width: 90%;
+    }
+  }
+
+  /* Problem Section */
+  .problem .l-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 5vw, 80px);
+    align-items: start;
+  }
+
+  .problem__intro {
+    padding-right: clamp(20px, 3vw, 40px);
+  }
+
+  .problem__list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: clamp(20px, 3vw, 40px);
+    border-left: 1px solid var(--color-line); /* hairline-rule */
+  }
+
+  .problem__item {
+    font-size: clamp(1rem, 2.2vw, 1.15rem);
+    font-weight: 500;
+    color: var(--color-text);
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.08); /* hairline-rule */
+  }
+  .problem__item:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 768px) {
+    .problem .l-wrapper {
+      grid-template-columns: 1fr;
+    }
+    .problem__list {
+      padding-left: 0;
+      border-left: none;
+      padding-top: 40px;
+      border-top: 1px solid var(--color-line);
+    }
+  }
+
+  /* Reasons Section */
+  .reasons .l-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 3fr; /* asymmetric */
+    gap: clamp(40px, 5vw, 80px);
+    align-items: center;
+  }
+
+  .reasons__text {
+    padding-right: clamp(20px, 3vw, 40px);
+  }
+
+  .reasons__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+
+  .reason-card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+    border: 1px solid var(--color-line); /* hairline-rule */
+  }
+
+  .reason-card__number {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: 15px;
+    line-height: 1;
+  }
+
+  .reason-card__title {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+  }
+
+  .reason-card__description {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-text);
+  }
+
+  @media (max-width: 768px) {
+    .reasons .l-wrapper {
+      grid-template-columns: 1fr;
+    }
+    .reasons__text {
+      padding-right: 0;
+      margin-bottom: 40px;
+    }
+  }
+
+  /* Doctor Section */
+  .doctor .l-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* asymmetric */
+    gap: clamp(40px, 5vw, 80px);
+    align-items: center;
+  }
+
+  .doctor__image-wrapper {
+    position: relative;
+    padding-bottom: 100%; /* 1:1 aspect ratio */
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    border: 1px solid var(--color-line); /* hairline-rule */
+  }
+
+  .doctor__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .doctor__content {
+    padding-left: clamp(20px, 3vw, 40px);
+  }
+
+  .doctor__name {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: var(--color-primary);
+    margin-bottom: 10px;
+  }
+
+  .doctor__position {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-accent);
+    margin-bottom: 20px;
+  }
+
+  .doctor__profile {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-text);
+    margin-bottom: 30px;
+  }
+
+  .doctor__specialties {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .doctor__specialties li {
+    background-color: #fff;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    color: var(--color-primary);
+    border: 1px solid var(--color-line); /* hairline-rule */
+  }
+
+  @media (max-width: 768px) {
+    .doctor .l-wrapper {
+      grid-template-columns: 1fr;
+    }
+    .doctor__content {
+      padding-left: 0;
+      margin-top: 40px;
+    }
+  }
+
+  /* Menu Section */
+  .menu__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: clamp(30px, 4vw, 60px);
+  }
+
+  .menu-category {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+    border: 1px solid var(--color-line); /* hairline-rule */
+  }
+
+  .menu-category__title {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+  }
+
+  .menu-category__title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 1px;
+    background-color: var(--color-accent);
+  }
+
+  .menu-category__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .menu-category__item {
+    font-size: 1rem;
+    color: var(--color-text);
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.08); /* hairline-rule */
+  }
+  .menu-category__item:last-child {
+    border-bottom: none;
+  }
+
+  /* Voice Section */
+  .voice {
+    background-color: var(--color-surface);
+  }
+
+  .voice__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+
+  .voice-card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+    border: 1px solid var(--color-line); /* hairline-rule */
+  }
+
+  .voice-card__text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-text);
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .voice-card__text::before {
+    content: "“";
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    color: var(--color-accent);
+    position: absolute;
+    top: -15px;
+    left: -10px;
+    opacity: 0.2;
+    line-height: 1;
+  }
+
+  .voice-card__author {
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 1rem;
+  }
+
+  .voice-card__pet {
+    font-size: 0.85rem;
+    color: var(--color-text);
+  }
+
+  /* Access Section */
+  .access .l-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* asymmetric */
+    gap: clamp(40px, 5vw, 80px);
+  }
+
+  .access__info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-right: clamp(20px, 3vw, 40px);
+  }
+
+  .access__detail {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text);
+    border-bottom: 1px solid rgba(0,0,0,0.08); /* hairline-rule */
+    padding-bottom: 15px;
+  }
+  .access__detail:last-of-type {
+    border-bottom: none;
+  }
+
+  .access__detail strong {
+    font-weight: 700;
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .access__map {
+    background-color: #e0e0e0;
+    min-height: 300px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 0.9rem;
+    border: 1px solid var(--color-line); /* hairline-rule */
+  }
+
+  @media (max-width: 768px) {
+    .access .l-wrapper {
+      grid-template-columns: 1fr;
+    }
+    .access__info {
+      padding-right: 0;
+      margin-bottom: 40px;
+    }
+  }
+
+  /* CTA Section */
+  .cta {
+    background-color: var(--color-primary);
+    color: #fff;
+    text-align: center;
+  }
+
+  .cta .section-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-accent);
+  }
+
+  .cta__description {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    line-height: 1.7;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-inline: auto;
+  }
+
+  .cta__contact-info {
+    margin-top: 30px;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-accent);
+  }
+
+  .cta__contact-info a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  .cta .c-btn {
+    background-color: var(--color-accent);
+    color: var(--color-text);
+    margin-top: 40px;
+  }
+  .cta .c-btn:hover {
+    background-color: color-mix(in srgb, var(--color-accent) 90%, black);
+  }
+
+  /* Footer */
+  .site-footer {
+    padding: 40px clamp(20px, 5vw, 40px);
+    background-color: color-mix(in srgb, var(--color-primary) 95%, black);
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    font-size: 0.85rem;
+    border-top: 1px solid var(--color-line); /* hairline-rule */
+  }
+
+  .site-footer__logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 15px;
+  }
+
+  .site-footer__address {
+    margin-bottom: 10px;
+  }
+
+  .site-footer__nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px 30px;
+    margin-bottom: 20px;
+  }
+
+  .site-footer__nav a {
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s ease;
+  }
+  .site-footer__nav a:hover {
+    color: var(--color-accent);
+  }
+</style>
+<style>:root{--color-primary:#4A6C5B;--color-accent:#D9A05B;--color-surface:#F8FBF8;--color-text:#36403A;--font-heading:'Shippori Mincho B1', serif;--font-body:'Noto Sans JP', sans-serif;--radius:8px;}</style>
+</head>
+<body>
+  <h1 class="sr-only">みわエキゾチック動物病院</h1>
+
+  <header class="site-header">
+    <a href="#" class="site-header__logo">みわエキゾチック動物病院</a>
+    <button class="c-hamburger js-nav-toggle" aria-controls="nav" aria-expanded="false" aria-label="メニューを開く">
+      <span class="c-hamburger__bars"></span>
+    </button>
+    <nav id="nav" class="c-nav">
+      <a href="#problem">当院の強み</a>
+      <a href="#reasons">選ばれる理由</a>
+      <a href="#doctor">院長紹介</a>
+      <a href="#menu">診療案内</a>
+      <a href="#voice">患者様の声</a>
+      <a href="#access">アクセス</a>
+      <a href="#cta">お問い合わせ</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" data-section="hero">
+      <img src="https://images.unsplash.com/photo-1596272875729-ed2ff7d6d9c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTk1ODZ8MHwxfHxleG90aWMlMjBwZXQlMjB2ZXRlcmluYXJpYW4lMjBjb25zdWx0YXRpb258ZW58MHwwfHx8MTc4NDQ1NjkyN3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="エキゾチックアニマルとの診察風景" class="hero__image">
+      <div class="hero__content">
+        <p class="section-subtitle">Specialized Care for Unique Companions</p>
+        <h2 class="hero__title">
+          珍しい家族に、<br>
+          専門性と温かいケアを。
+        </h2>
+        <p class="hero__description">
+          豊島区にあるみわエキゾチック動物病院は、爬虫類、鳥、ウサギ、フェレットなどの<br class="u-hidden-sp">
+          特殊なペットに特化した専門医療を提供しています。
+          深い知識と経験で、デリケートな命を支えます。
+        </p>
+        <div class="hero__cta">
+          <a href="#cta" class="c-btn">ご予約・お問い合わせ</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="problem" data-section="problem">
+      <div class="l-wrapper">
+        <div class="problem__intro">
+          <p class="section-subtitle">Our Commitment</p>
+          <h2 class="section-title">
+            エキゾチックアニマルとの<br>
+            暮らしを支えるために
+          </h2>
+          <p>
+            一般的な動物病院では対応が難しいとされるエキゾチックアニマル。
+            彼らの生態や疾患は多岐にわたり、専門的な知識と経験が不可欠です。
+            当院は、そんな特殊な家族を持つ飼い主様の不安に寄り添い、確かな医療でサポートします。
+          </p>
+        </div>
+        <ul class="problem__list">
+          <li class="problem__item">専門知識を持つ獣医が少ない</li>
+          <li class="problem__item">適切な診断や治療が受けにくい</li>
+          <li class="problem__item">デリケートな動物への配慮が不足しがち</li>
+          <li class="problem__item">飼育方法に関する情報が少ない</li>
+          <li class="problem__item">緊急時に対応できる病院が見つからない</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="reasons" data-section="reasons">
+      <div class="l-wrapper">
+        <div class="reasons__text">
+          <p class="section-subtitle">Why Choose Us?</p>
+          <h2 class="section-title">
+            みわエキゾチック動物病院が<br>
+            選ばれる理由
+          </h2>
+          <p>
+            私たちは、エキゾチックアニマルの専門家として、
+            飼い主様が抱えるあらゆる疑問や不安に対し、
+            丁寧な説明と最適な治療プランをご提案します。
+            小さな命への深い理解と尊重を胸に、日々診療にあたっています。
+          </p>
+        </div>
+        <div class="reasons__grid">
+          <div class="reason-card">
+            <div class="reason-card__number">01</div>
+            <h3 class="reason-card__title">専門医による確かな診断</h3>
+            <p class="reason-card__description">
+              エキゾチックアニマルに特化した専門知識を持つ獣医師が、
+              それぞれの動物の特性に応じた適切な診断を行います。
+            </p>
+          </div>
+          <div class="reason-card">
+            <div class="reason-card__number">02</div>
+            <h3 class="reason-card__title">デリケートな動物への配慮</h3>
+            <p class="reason-card__description">
+              ストレスを最小限に抑えるよう、
+              動物たちの性格や状態に合わせた優しいケアを心がけています。
+            </p>
+          </div>
+          <div class="reason-card">
+            <div class="reason-card__number">03</div>
+            <h3 class="reason-card__title">飼い主様との密な連携</h3>
+            <p class="reason-card__description">
+              治療方針や飼育方法について、
+              飼い主様とじっくり話し合い、納得のいく選択をサポートします。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="doctor" data-section="doctor">
+      <div class="l-wrapper">
+        <div class="doctor__image-wrapper">
+          <img src="https://images.unsplash.com/photo-1630438994394-3deff7a591bf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTk1ODZ8MHwxfHNlYXJjaHwyfHxleG90aWMlMjBwZXQlMjB2ZXRlcmluYXJpYW4lMjBjb25zdWx0YXRpb258ZW58MHwwfHx8MTc4NDQ1NjkyN3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="院長のプロフィール写真" class="doctor__image">
+        </div>
+        <div class="doctor__content">
+          <p class="section-subtitle">Our Veterinarian</p>
+          <h2 class="section-title">
+            院長紹介
+          </h2>
+          <h3 class="doctor__name">三輪 太郎</h3>
+          <p class="doctor__position">獣医師 / エキゾチックアニマル専門</p>
+          <p class="doctor__profile">
+            学生時代からエキゾチックアニマルに魅せられ、その奥深い世界に没頭。
+            卒業後は複数の動物病院で経験を積み、特に希少動物の診療に力を入れてきました。
+            動物たちの言葉にならない声に耳を傾け、飼い主様が安心して共に歩めるよう、
+            最善の医療と温かいサポートを提供することを使命としています。
+            どんな小さな疑問でも、お気軽にご相談ください。
+          </p>
+          <ul class="doctor__specialties">
+            <li>爬虫類医療</li>
+            <li>鳥類医療</li>
+            <li>小動物（ウサギ・フェレット・モルモット）</li>
+            <li>栄養指導</li>
+            <li>行動学</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu" data-section="menu">
+      <div class="l-wrapper">
+        <p class="section-subtitle">Our Services</p>
+        <h2 class="section-title">
+          診療案内
+        </h2>
+        <div class="menu__grid">
+          <div class="menu-category">
+            <h3 class="menu-category__title">爬虫類</h3>
+            <ul class="menu-category__list">
+              <li class="menu-category__item">一般診療（健康診断、寄生虫検査など）</li>
+              <li class="menu-category__item">代謝性骨疾患の治療</li>
+              <li class="menu-category__item">皮膚疾患の治療</li>
+              <li class="menu-category__item">飼育環境のアドバイス</li>
+              <li class="menu-category__item">外科手術（お問い合わせください）</li>
+            </ul>
+          </div>
+          <div class="menu-category">
+            <h3 class="menu-category__title">鳥類</h3>
+            <ul class="menu-category__list">
+              <li class="menu-category__item">一般診療（そのう検査、糞便検査など）</li>
+              <li class="menu-category__item">呼吸器疾患の治療</li>
+              <li class="menu-category__item">羽毛・皮膚疾患の治療</li>
+              <li class="menu-category__item">栄養指導・体重管理</li>
+              <li class="menu-category__item">外科手術（お問い合わせください）</li>
+            </ul>
+          </div>
+          <div class="menu-category">
+            <h3 class="menu-category__title">小動物</h3>
+            <ul class="menu-category__list">
+              <li class="menu-category__item">ウサギ（歯科疾患、消化器疾患など）</li>
+              <li class="menu-category__item">フェレット（副腎疾患、インスリノーマなど）</li>
+              <li class="menu-category__item">モルモット（ビタミンC欠乏症、皮膚疾患など）</li>
+              <li class="menu-category__item">その他小型哺乳類</li>
+              <li class="menu-category__item">避妊・去勢手術（お問い合わせください）</li>
+            </ul>
+          </div>
+        </div>
+        <p style="font-size: 0.9rem; color: var(--color-text); margin-top: 40px;">
+          ※上記は主な診療内容です。その他の動物種や症状についても、まずはお気軽にご相談ください。<br>
+          診療内容の詳細、リスク、費用については、受付または診察時にお問い合わせください。
+        </p>
+      </div>
+    </section>
+
+    <section class="voice" data-section="voice">
+      <div class="l-wrapper">
+        <p class="section-subtitle">Patient's Feedback</p>
+        <h2 class="section-title">
+          患者様の声
+        </h2>
+        <div class="voice__grid">
+          <div class="voice-card">
+            <p class="voice-card__text">
+              初めてエキゾチックアニマルを飼うことになり、不安なことばかりでしたが、
+              先生がとても丁寧に飼育方法から教えてくださり、安心できました。
+              病院の雰囲気も落ち着いていて、うちの子もリラックスしているようです。
+            </p>
+            <p class="voice-card__author">S.K様</p>
+            <p class="voice-card__pet">（フトアゴヒゲトカゲのゴン太くん）</p>
+          </div>
+          <div class="voice-card">
+            <p class="voice-card__text">
+              他の病院では診てもらえなかった鳥の専門的な症状について、
+              的確な診断とアドバイスをいただけました。
+              先生の説明が分かりやすく、疑問を解消できたことが何より嬉しかったです。
+            </p>
+            <p class="voice-card__author">M.T様</p>
+            <p class="voice-card__pet">（セキセイインコのピーちゃん）</p>
+          </div>
+          <div class="voice-card">
+            <p class="voice-card__text">
+              ウサギのデリケートな性格を理解してくださり、
+              無理なく診察を進めていただけたので、うちの子もストレスなく通院できています。
+              スタッフの方々も優しく、いつも感謝しています。
+            </p>
+            <p class="voice-card__author">A.Y様</p>
+            <p class="voice-card__pet">（ネザーランドドワーフのココちゃん）</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="access" data-section="access">
+      <div class="l-wrapper">
+        <div class="access__info">
+          <p class="section-subtitle">Location</p>
+          <h2 class="section-title">
+            アクセス
+          </h2>
+          <div class="access__detail">
+            <strong>住所</strong>
+            <p>東京都豊島区駒込１丁目２５−５</p>
+          </div>
+          <div class="access__detail">
+            <strong>電話番号</strong>
+            <p><a href="tel:03-5981-9761">03-5981-9761</a></p>
+          </div>
+          <div class="access__detail">
+            <strong>診療時間</strong>
+            <p>
+              月・火・木・金：9:00 - 12:00 / 16:00 - 19:00<br>
+              土・日・祝：9:00 - 12:00<br>
+              水曜休診
+            </p>
+          </div>
+          <div class="access__detail">
+            <strong>最寄駅</strong>
+            <p>JR山手線 駒込駅より徒歩5分</p>
+          </div>
+        </div>
+        <div class="access__map">
+          Googleマップの埋め込みエリア（デモのため表示していません）
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" data-section="cta">
+      <div class="l-wrapper">
+        <p class="section-subtitle">Contact Us</p>
+        <h2 class="section-title">
+          ご予約・お問い合わせ
+        </h2>
+        <p class="cta__description">
+          エキゾチックアニマルの健康に関するご相談や、
+          診療のご予約は、お電話またはお問い合わせフォームより承っております。
+          専門スタッフが丁寧に対応いたしますので、お気軽にご連絡ください。
+        </p>
+        <p class="cta__contact-info">
+          お電話でのご予約・お問い合わせ<br>
+          <a href="tel:03-5981-9761">03-5981-9761</a>
+        </p>
+        <a href="#" class="c-btn">お問い合わせフォームへ</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="l-wrapper">
+      <p class="site-footer__logo">みわエキゾチック動物病院</p>
+      <p class="site-footer__address">〒170-0003 東京都豊島区駒込１丁目２５−５</p>
+      <ul class="site-footer__nav">
+        <li><a href="#problem">当院の強み</a></li>
+        <li><a href="#reasons">選ばれる理由</a></li>
+        <li><a href="#doctor">院長紹介</a></li>
+        <li><a href="#menu">診療案内</a></li>
+        <li><a href="#voice">患者様の声</a></li>
+        <li><a href="#access">アクセス</a></li>
+        <li><a href="#cta">お問い合わせ</a></li>
+      </ul>
+      <p>&copy; <span id="y"></span> みわエキゾチック動物病院 All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <div class="c-floating-cta">
+    <a href="#cta" class="c-btn">ご予約・お問い合わせ</a>
+  </div>
+<script>
+/* nav.js — 全画面ハンバーガーの開閉（背後スクロールロック）。全デモ共通の不変挙動。 */
+(function () {
+  var t = document.querySelector('.js-nav-toggle');
+  var n = document.getElementById('nav');
+  if (t && n) {
+    t.addEventListener('click', function () {
+      var open = t.getAttribute('aria-expanded') === 'true';
+      t.setAttribute('aria-expanded', String(!open));
+      n.classList.toggle('is-open', !open);
+      document.body.style.overflow = open ? '' : 'hidden';
+    });
+    n.addEventListener('click', function (e) {
+      if (e.target.closest('a')) { t.setAttribute('aria-expanded', 'false'); n.classList.remove('is-open'); document.body.style.overflow = ''; }
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { t.setAttribute('aria-expanded', 'false'); n.classList.remove('is-open'); document.body.style.overflow = ''; } });
+  }
+  var y = document.getElementById('y'); if (y) y.textContent = new Date().getFullYear();
+
+  /* スクロールリビール（抑制的モーション）：各 data-section の直下要素を
+     ふわっと表示。クラスはJSで付与するのでJS無効環境では常に見える。
+     prefers-reduced-motion は base.css 側の全体無効化が効く。 */
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('is-inview'); io.unobserve(en.target); }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+    document.querySelectorAll('[data-section]').forEach(function (sec) {
+      var kids = Array.prototype.slice.call(sec.children);
+      kids.forEach(function (el, i) {
+        el.classList.add('js-reveal');
+        el.style.transitionDelay = Math.min(i * 90, 360) + 'ms';
+        io.observe(el);
+      });
+    });
+  }
+})();
+
+</script>
+</body>
+</html>
