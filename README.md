@@ -1,2 +1,3 @@
 # demo-a62298
-Auto generated demo site for みわエキゾチック動物病院
+
+AIによって自動生成された みわエキゾチック動物病院 様向けのデモサイトです。
